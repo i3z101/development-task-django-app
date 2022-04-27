@@ -4,10 +4,18 @@
 - This project was built using Django framework.
 - This project contains only 4 pages which are login, register, home, and question details.
 - This project implements MVC pattern
+- This project uses postgresql as the database
 
 # -----------------------
 
-# NOTICE
+# NOTICE1
+
+## Make sure to add database called tasks in your postgres server
+
+# -----------------------
+# -----------------------
+
+# NOTICE1
 
 ## You will see that the view file replaced with controllers folder and template folder with views folder to follow the MVC pattern
 
@@ -35,6 +43,12 @@ Install the dependencies and devDependencies and start the server.
 ### Make sure you already have installed python and django
 ```sh
 pipenv shell
+```
+```sh
+python manage.py makemigrations
+```
+```sh
+python manage.py migrate
 ```
 ```sh
 python manage.py runserver
