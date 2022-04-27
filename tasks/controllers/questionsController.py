@@ -7,7 +7,9 @@ from tasks.validations.validations import Validation
 from django.contrib import messages
 
 def addQuestion(request: HttpRequest) -> HttpResponse:
-    if(request.method == "POST"):
+    if(not request.session.has_key('user')):
+        return redirect('/')
+    elif(request.method == "POST"):
         return submitQuestion(request)
     return render(request, 'add-question.html', {'title': 'Add Question'})
 
@@ -42,6 +44,8 @@ def questionDetails(request: HttpRequest, question_id: int) -> HttpResponse:
     if(request.method == 'POST'):
         return submitAnswer(request, question_id)
     question = Question.objects.filter(id = question_id).select_related('user').all().first()
+    if(not question):
+        return redirect('/')
     decodedAnswers = json.loads(question.answers)
     return render(request, 'question.html', {
         'title': 'Answer',

@@ -24,6 +24,7 @@
 - Fast retreival.
 - Validation methods for form fields.
 - Once the user keys in wrong vaues, send button will be disabled.
+- Protected routes
 
 # -----------------------
 
