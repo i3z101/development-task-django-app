@@ -13,9 +13,8 @@
 ## Make sure to add database called tasks in your postgres server
 
 # -----------------------
-# -----------------------
 
-# NOTICE1
+# NOTICE2
 
 ## You will see that the view file replaced with controllers folder and template folder with views folder to follow the MVC pattern
 
