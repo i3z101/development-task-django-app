@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+:root {
+    --font: 'Bebas Neue', cursive;
+}
+
+
+.validation {
+    color: tomato !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    padding-left: 9.5rem !important;
+    padding-top: 0.1rem;
+}
+
+input {
+    font-size: 16px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@media only screen and (max-width: 800px) {
+    .validation {
+        padding-left: 1rem !important;
+    }
+}

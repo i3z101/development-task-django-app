@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+
+{% block questionDetails %}
+    
+    {% include './reusable/nav.html' %}
+    
+    
+    <section class="col-md-10 mt-5 m-auto">
+        {% if not session.user %}
+            <a href="/">
+                <b>Return back to home</b>
+            </a>
+        {% endif %}
+        <div class="card mt-4">
+            <div class="card-body">
+                <h3 class="text-center">{{question.question}}?</h3>
+                <form action="/questions/{{question.id}}" method="post">
+                    {% csrf_token %}
+                    {% for answer in answers%}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answer"  value="{{answer}}" id="answer">
+                            <label class="form-check-label text-primary" for="answer"> {{answer}}</label>
+                        </div>
+                    {% endfor %}
+                    <button class="btn btn-primary col-md-3 m-auto mt-2">Submit</button>
+                </form>
+            </div>
+        </div>
+        
+        {% if succeed %}
+            <input id="redirect" type="text" hidden value="/" />
+            {% include './reusable/modal.html' with title="Yess" message="Your answer is correct" %}
+        {% elif failed%}
+        <p class="bg-danger p-2 text-white errorMessage mt-3 col-6 m-auto text-center">Your answer is not correct</p>
+        {% endif %}
+            
+    </section>
+    
+{% endblock questionDetails %}
+
+{% block jsFiles %}
+<script src="{% static 'js/reusable.js' %}?{% now 'U' %}"></script>
+<script src="{% static 'js/validations.js' %}?{% now 'U' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+{% endblock jsFiles %}
+    
+    
+    

@@ -1,0 +1,10 @@
+{% if request.session.user %}
+  <div class="d-flex flex-row justify-content-around align-items-center">
+      <form action="logout" method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger col-md-12 ms-2 m-auto mt-4">Logout</button>
+      </form>
+      <a href="/" class="text-decoration-none pt-4">Home</a>
+      <p class="pt-4" style="color: #1c3cf0;">Logged in as <b class="text-danger">{{request.session.user.name}}</b></p>
+  </div>
+{% endif %}

@@ -1,0 +1,11 @@
+.register_container {
+    width: 50%;
+    margin: auto;
+    margin-top: 10rem;
+}
+
+.welcome {
+    font-family: var(--font);
+    margin-bottom: 1rem;
+}
+

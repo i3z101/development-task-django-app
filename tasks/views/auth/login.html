@@ -1,0 +1,62 @@
+{% extends '../main.html' %}
+{% load static %}
+
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/auth/auth.css'%}?{% now 'U' %}">
+    
+{% endblock head %}
+
+
+{% block register %}
+
+    <section class="register_container">
+        {% if error%}
+         <p class="bg-danger p-2 text-white errorMessage">{{error}}</p>
+        {%endif%}
+        <h3 class="welcome">WELCOME</h3>
+        <form action="login" method="post">
+          {% csrf_token %}
+            <!-- START EMAIL FIELD -->
+            <div class="mb-3 mt-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" name="email" class="form-control email">
+                </div>
+                <div class="mb-3 row">
+                    <p class="emailValidation validation">{{emailValidationMessage}}</p>
+                </div>
+              </div>
+              <!-- END EMAIL FIELD -->
+              <!-- START PASSWORD FIELD -->
+              <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                  <input type="password" name="password" class="form-control password" id="inputPassword">
+                </div>
+                <div class="mb-3 row">
+                  <p class="passwordValidation validation">{{passwordValidationMessage}}</p>
+               </div>
+              </div>
+             <!-- END EMAIL FIELD -->
+              <div class="mb-3 row col-md-4 m-auto">
+                <button type="submit" class="btn btn-primary mb-3 submit" >Register</button>
+              </div>
+        </form>
+        <!-- Button trigger modal -->
+        <div class="text-center">
+          <a href="register" class="text-primary">Register? click here</a>
+        </div>
+    </section>
+    
+{% endblock register %}
+
+
+{% block jsFiles %}
+<script src="{% static 'js/auth/auth.js' %}?{% now 'U' %}"></script>
+<script src="{% static 'js/validations.js' %}?{% now 'U' %}"></script>
+{% endblock jsFiles %}
+    
+    
+    

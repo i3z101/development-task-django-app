@@ -1,0 +1,28 @@
+.add_question_container {
+    margin-top: 4rem;
+}
+
+.add_answers_fields_container {
+    width: 50% !important;
+    margin: 2rem auto;
+}
+
+.add_answers_fields {
+    margin: auto;
+}
+
+.add_wrong_answers_fields_container {
+    flex-direction: row !important;
+}
+
+@media only screen and (max-width: 800px) {
+    .add_answers_fields_container {
+        width: 90% !important;
+    }
+    .add_wrong_answers_fields_container {
+        flex-direction: column !important;
+    }
+    .add_wrong_answers_fields_container button {
+        margin-top: 1rem;
+    }
+}

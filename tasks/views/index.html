@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+    {% include './reusable/nav.html' %}
+    <section class="home_container mt-5">
+        <div class="row m-auto mb-5">
+            {% if request.session.user %}
+            <a href="add-question" class="text-center text-primary text-decoration-none">Add A New Question</a>
+            {% else %}
+            <a href="login" class="text-center text-primary">Login To Add A New Question </a>
+            {% endif %}
+        </div>
+        {% for question in questions %}
+            <div class="col-md-6 mb-4 m-auto question_card_container">
+                <a href="questions/{{question.id}}" class="text-decoration-none">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="">{{question.question}}</p>
+                            <p>Click to see the answers</p>
+                            
+                            {% if question.user.name != request.session.user.name %}
+                                <small class="text-black"><i>Posted by {{question.user.name}}</i></small>
+                            {% else %}
+                                <small class="text-black"><i>Posted by you</i></small>
+                            {% endif %}
+                                
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% empty %}
+            <div class="row m-auto">
+                <h1 class="text-center">No Questions Posted By Others Yet !</h1>
+                {% if not request.session.user %}
+                <a href="login" class="text-center text-primary">Login To Add A New Question </a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </section>
+        
+{% endblock content %}
+    

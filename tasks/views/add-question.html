@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+
+{% block head %}
+
+    <link rel="stylesheet" href="{% static 'css/questions.css' %}?{% now 'U' %}">
+    
+{% endblock head %}
+
+     
+
+{% block addQuestions %}
+    {% include './reusable/nav.html' %}
+    <section class="add_question_container">
+        <h3 class="text-center text-primary">Add New Question</h3>
+        <form action="add-question" id="answers_fields" class="d-flex flex-column justify-center add_answers_fields_container mt-2" method="post">
+            {% csrf_token %}
+            <div class="d-flex flex-row mt-5 mb-3 add_wrong_answers_fields_container">
+                <input type="number" class="add_answers_fields form-control me-md-2" name="numQuestions" placeholder="How many wrong answers do you want to add ?" />
+                <button type="button" class="confirm_answers_fields btn btn-primary col-md-3">Add</button>
+            </div>
+            <input type="text" class=" form-control question mt-2" name="question" placeholder="Type Your Question" />
+            <input type="text" class="form-control correctAnswer mt-2" name="correctAnswer" placeholder="Correct Answer" />
+            <button class="confirm_answers_fields btn btn-primary col-md-3 m-auto mt-2 addQuestion">Add Your Question</button>
+            <p class="p-2 mt-2 text-danger questionErrorMessage col-md-6 m-auto"></p>
+            <p class="p-2 mt-2 text-danger correctErrorMessage col-md-6 m-auto"></p>
+            <p class="p-2 mt-2 text-danger errorMessage col-md-6 m-auto"></p>
+        </form>
+        {% for message in messages  %}
+            <p class="bg-danger p-2 mt-2 text-white errorMessage col-md-6 m-auto">{{message}}</p>
+        {% endfor %}
+            
+    </section>
+{% endblock addQuestions %}
+    
+
+{% block jsFiles %}
+<script src="{% static 'js/questions.js' %}?{% now 'U' %}"></script>
+<script src="{% static 'js/validations.js' %}?{% now 'U' %}"></script>
+{% endblock jsFiles %}
