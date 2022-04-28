@@ -1,4 +1,4 @@
-const redirect = document.getElementById('redirect').value;
+const redirect = document.getElementById('redirect');
 const modalContainer = document.getElementById('register-modal')
 const modalOverlay = document.getElementById('modal-overlay')
 
@@ -10,6 +10,6 @@ if(modalContainer != null) {
     modalContainer.style.display = 'block'
     modalOverlay.classList.add('show')
     setTimeout(()=> {
-        window.location.href = `${redirect}`
+        window.location.href = `${redirect.value}`
     }, 2000)
 }
