@@ -34,7 +34,7 @@ questionInput.addEventListener('keyup', (e)=>{
 })
 
 correctAnswerInput.addEventListener('keyup', (e)=> {
-    validateStringOnChange(e.target.value, "Corect answer", correctErrorMessage, true, 3, 100, true, true, false)
+    validateStringOnChange(e.target.value, "Corect answer", correctErrorMessage, true, 2, 100, true, true, false)
     disableBtn()
 })
 
@@ -53,7 +53,7 @@ confirmAnswersFieldsBtn.addEventListener('click', ()=> {
 
     for(let i= 0; i< wrongAnswersFields.length; i++){
         wrongAnswersFields[i].addEventListener('keyup', (e) => {
-            validateStringOnChange(e.target.value, `Answer ${wrongAnswersFields[i].name}`, errorMessage, true, 3, 100, true, true, false)
+            validateStringOnChange(e.target.value, `Answer ${wrongAnswersFields[i].name}`, errorMessage, true, 2, 100, true, true, false)
             disableBtn()
         })
     }

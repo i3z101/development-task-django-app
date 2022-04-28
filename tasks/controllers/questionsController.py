@@ -21,7 +21,7 @@ def submitQuestion(request: HttpRequest) -> HttpResponse:
     question: str = request.POST['question']
     questionValidationMessage: str = Validation(question).validateString("Question", True, 3, 100, True, True).message.strip()
     correctAnswer: str = request.POST['correctAnswer']
-    correctAnswerValidationMessage: str = Validation(correctAnswer).validateString("Correct Answer", True, 3, 100, True, True).message.strip()
+    correctAnswerValidationMessage: str = Validation(correctAnswer).validateString("Correct Answer", True, 2, 100, True, True).message.strip()
     if(numQuestionsValidationMessage != "" or questionValidationMessage != "" or correctAnswerValidationMessage != ""):
         messages.info(request, numQuestionsValidationMessage)
         messages.info(request, questionValidationMessage)
@@ -30,7 +30,7 @@ def submitQuestion(request: HttpRequest) -> HttpResponse:
     answers.append(correctAnswer)
     for i in range(int(numQuestions)):
         wrongAnswer = request.POST['answer' + str(i+1)]
-        wrongAnswersValidations = Validation(wrongAnswer).validateString("Wrong answer " + str(i+1), True, 3, 100, True, True).message.strip()
+        wrongAnswersValidations = Validation(wrongAnswer).validateString("Wrong answer " + str(i+1), True, 2, 100, True, True).message.strip()
         if(wrongAnswersValidations != ""):
             messages.info(request, wrongAnswersValidations)
             return redirect('/add-question')
