@@ -16,14 +16,13 @@
 
 # NOTICE 2
 
-## You will see that the view file replaced with controllers folder and template folder with views folder to follow the MVC pattern
+## You will see that the view file was replaced with the controllers folder and template folder was replaced with the views folder to follow the MVC pattern
 
 # -----------------------
 
 ## Features
 - Fast retreival.
 - Validation methods for form fields.
-- Once the user keys in wrong vaues, send button will be disabled.
 - Protected routes
 
 # -----------------------
